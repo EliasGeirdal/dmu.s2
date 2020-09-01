@@ -21,7 +21,7 @@ public class Nedboer {
 	 *
 	 * @return
 	 */
-	// O(n)
+	// O(n) O(1)
 	public static int bedsteTreFerieUger() {
 		// TODO
 		int sum = (nedboerPrUge[0] + nedboerPrUge[1] + nedboerPrUge[2]);
@@ -44,7 +44,7 @@ public class Nedboer {
 	 * @return
 	 */
 
-	// O(n^2)
+	// O(n^2) O(1)
 	public static int bedsteFerieUgerStart(int antal) {
 		// TODO
 		int maxNedbør = Integer.MAX_VALUE;
