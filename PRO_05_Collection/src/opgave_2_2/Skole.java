@@ -19,6 +19,11 @@ public class Skole {
 			}
 		}
 		return stud;
+//		for (Studerende element : studerende) {
+//			if (element.getStudieNr() == studieNr)
+//				return element;
+//		}
+//		return null
 	}
 
 	public double gennemsnit() {
