@@ -20,10 +20,13 @@ public class Studerende {
 
 	public double gennemsnit() {
 		double result = 0;
-		for (Integer element : karakterer) {
-			result += element;
+		if (karakterer.size() > 0) {
+			for (Integer element : karakterer) {
+				result += element;
+			}
+			result = result / karakterer.size();
 		}
-		return result / karakterer.size();
+		return result;
 	}
 
 	public String getNavn() {
