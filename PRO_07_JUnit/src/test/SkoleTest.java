@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +24,11 @@ public class SkoleTest {
 		stud.addKarakter(7);
 		stud.addKarakter(10);
 		stud.addKarakter(2);
+//
+		stud1.addKarakter(4);
+		stud1.addKarakter(7);
+		stud1.addKarakter(10);
+		stud1.addKarakter(2);
 		skole.addStuderende(stud);
 		skole.addStuderende(stud1);
 	}
@@ -46,7 +50,8 @@ public class SkoleTest {
 
 	@Test
 	public void testRemoveStuderende() {
-		fail("Not yet implemented");
+		skole.removeStuderende(stud1);
+		assertEquals(null, skole.findStuderende(3));
 	}
 
 	@Test

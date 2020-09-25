@@ -22,6 +22,9 @@ public class Skole {
 	}
 
 	public double gennemsnit() {
+		if (studerende.size() == 0) {
+			return studerende.get(0).gennemsnit();
+		}
 		double result = 0;
 		for (Studerende element : studerende) {
 			result += element.gennemsnit();
