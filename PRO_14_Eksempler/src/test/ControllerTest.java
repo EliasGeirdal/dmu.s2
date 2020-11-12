@@ -16,7 +16,6 @@ public class ControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		controller = controller.getTestController();
 		controller.createStudent("Margrethe", 51, true);
 		System.out.println("setup kaldt");
 	}
