@@ -1,5 +1,7 @@
 package opgaver;
 
+import java.util.NoSuchElementException;
+
 public class Opg_02_SortedDoublyLinkedList {
 	private class Node {
 		public String data;
@@ -9,6 +11,8 @@ public class Opg_02_SortedDoublyLinkedList {
 
 	private Node first;
 	private Node last;
+	private Node position;
+	private Node lastVisited;
 
 	/**
 	 * Laver en tom sorteret doubly linked list.
@@ -34,35 +38,44 @@ public class Opg_02_SortedDoublyLinkedList {
 		boolean added = false;
 		Node newNode = new Node();
 		newNode.data = element;
+		position = first;
+		lastVisited = first;
 		if (first.data == null) {
-			newNode.next = first;
+			newNode.next = first.next;
+			newNode.previous = first.previous;
+			last.previous = newNode;
 			first = newNode;
-			position = first;
-
-		} else if (first.next == null) {
+		} else if (first.next.data == null) {
 			if (first.data.compareTo(element) > 0) {
+				first.previous = newNode;
 				newNode.next = first;
+				last = first;
 				first = newNode;
 			} else {
+				newNode.next = first.next;
 				first.next = newNode;
+				last = newNode;
 			}
 		} else {
 			while (!added) {
-
 				if (position.data.compareTo(element) > 0) {
-					newNode.next = previous.next;
-					previous.next = newNode;
+					newNode.next = lastVisited.next;
+					lastVisited.next.previous = newNode;
+					lastVisited.next = newNode;
+					newNode.previous = lastVisited;
 					added = true;
-				} else if (position.next == null) {
+				} else if (position.equals(last)) {
 					position.next = newNode;
+					newNode.previous = position;
+					last = newNode;
 					added = true;
 				}
-				previous = position;
+				lastVisited = position;
 				position = position.next;
 			}
 		}
 		position = first;
-		previous = position;
+		lastVisited = position;
 	}
 
 	/**
@@ -72,23 +85,38 @@ public class Opg_02_SortedDoublyLinkedList {
 	 * @return true hvis elementet blev fjernet, men ellers false.
 	 */
 	public boolean removeElement(String element) {
-		// TODO: lav mig
+		return false;
 	}
 
 	public String removeFirst() {
-		// TODO: lav mig
+		return null;
 	}
 
 	public String removeLast() {
-		// TODO: lav mig
+		return null;
 	}
 
 	public int countElements() {
-		// TODO: lav mig
+		return 0;
 	}
 
 	@Override
 	public String toString() {
-		// TODO: lav mig
+		String result = "[";
+		Node next;
+		if (first.data == null) {
+			throw new NoSuchElementException();
+		}
+		if (first.next.data == null) {
+			result += first.data;
+		} else {
+			result += first.data;
+			next = first.next;
+			while (next != null) {
+				result += " " + next.data;
+				next = next.next;
+			}
+		}
+		return result + "]";
 	}
 }
