@@ -58,7 +58,7 @@ public class Opg_02_SortedDoublyLinkedList {
 			}
 		} else {
 			while (!added) {
-				if (position.data.compareTo(element) > 0) {
+				if (position.data.compareTo(element) >= 0) {
 					newNode.next = lastVisited.next;
 					lastVisited.next.previous = newNode;
 					lastVisited.next = newNode;
@@ -85,19 +85,87 @@ public class Opg_02_SortedDoublyLinkedList {
 	 * @return true hvis elementet blev fjernet, men ellers false.
 	 */
 	public boolean removeElement(String element) {
-		return false;
+		boolean deleted = false;
+		Node previous = first;
+		position = first;
+		if (first.next.data == null) {
+			if (first.data.equals(element)) {
+				first.data = null;
+				deleted = true;
+			}
+		}
+		while (position != null && !deleted) {
+			if (position.data.equals(element)) {
+				if (position.equals(first)) {
+					first = first.next;
+				}
+				previous.next = position.next;
+				position.previous = previous;
+				deleted = true;
+			} else {
+				previous = position;
+				position = position.next;
+			}
+		}
+		return deleted;
 	}
 
 	public String removeFirst() {
-		return null;
+		if (first.data == null) {
+			throw new NoSuchElementException();
+		}
+		String f = first.data;
+		first = first.next;
+		first.previous = null;
+
+		return f;
 	}
 
 	public String removeLast() {
-		return null;
+		if (first.data == null) {
+			throw new NoSuchElementException();
+		}
+		String f = last.data;
+		last = last.previous;
+		last.next.data = null;
+
+		return f;
 	}
 
 	public int countElements() {
-		return 0;
+		int count = 0;
+		Node next = first;
+		while (next.data != null) {
+			count++;
+			next = next.next;
+		}
+		return count;
+	}
+
+	/**
+	 * Tilføjer alle elementerne fra list til den aktuelle liste. Listen er fortsat
+	 * sorteret i henhold til den naturlige ordning på elementerne.
+	 */
+	public void addAll(Opg_02_SortedDoublyLinkedList list) {
+		Node position = list.first;
+		while (position.data != null) {
+			addElement(position.data);
+			position = position.next;
+		}
+	}
+
+	public int recursiveCount() {
+		return recursiveCount(first);
+	}
+
+	public int recursiveCount(Node pos) {
+		int count = 0;
+		if (pos == last) {
+			return 1;
+		} else {
+			count = 1 + recursiveCount(pos.next);
+		}
+		return count;
 	}
 
 	@Override
@@ -105,14 +173,14 @@ public class Opg_02_SortedDoublyLinkedList {
 		String result = "[";
 		Node next;
 		if (first.data == null) {
-			throw new NoSuchElementException();
+			return result + "]";
 		}
 		if (first.next.data == null) {
 			result += first.data;
 		} else {
 			result += first.data;
 			next = first.next;
-			while (next != null) {
+			while (next.data != null) {
 				result += " " + next.data;
 				next = next.next;
 			}
