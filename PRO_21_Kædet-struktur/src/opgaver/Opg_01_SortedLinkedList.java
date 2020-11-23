@@ -64,6 +64,7 @@ public class Opg_01_SortedLinkedList {
 		if (first.next == null) {
 			if (first.data.equals(element)) {
 				first = first.next;
+				deleted = true;
 			}
 		}
 		while (position != null && !deleted) {

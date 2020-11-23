@@ -1,38 +1,45 @@
 package opgave3;
 
 import java.util.Arrays;
+import java.util.concurrent.Semaphore;
 
 public class MainApp {
 	public static void main(String[] args) throws InterruptedException {
+		Semaphore s = new Semaphore(1);
+		long l1 = System.nanoTime();
+		try {
+			Lottoraek rigtig = new Lottoraek();
+			Lottoraek[] raekker = new Lottoraek[10000000];
+			for (int i = 0; i < raekker.length; i++) {
+				raekker[i] = new Lottoraek();
+			}
+			Lottoraek[] foerste = new Lottoraek[raekker.length / 2];
+			Lottoraek[] anden = new Lottoraek[raekker.length / 2];
 
-		Lottoraek rigtig = new Lottoraek();
-		Lottoraek[] raekker = new Lottoraek[6];
-		for (int i = 0; i < raekker.length; i++) {
-			raekker[i] = new Lottoraek();
+			for (int i = 0; i < raekker.length / 2; i++) {
+				foerste[i] = raekker[i];
+			}
+			for (int i = 0; i < raekker.length / 2; i++) {
+				anden[i] = raekker[5000000 + i];
+			}
+
+			LottoThread f1 = new LottoThread(foerste, rigtig);
+			LottoThread f2 = new LottoThread(anden, rigtig);
+			f1.start();
+			f2.start();
+			f1.join();
+			f2.join();
+
+			int[] rigtige = new int[8];
+			for (int i = 0; i < rigtige.length; i++) {
+				rigtige[i] = f1.getRigtige()[i] + f2.getRigtige()[i];
+			}
+			System.out.println(Arrays.toString(rigtige));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		Lottoraek[] foerste = new Lottoraek[raekker.length / 2];
-		Lottoraek[] anden = new Lottoraek[raekker.length / 2];
-
-		for (int i = 0; i < raekker.length / 2; i++) {
-			foerste[i] = raekker[i];
-		}
-		for (int i = 0 / 2; i < raekker.length / 2; i++) {
-			anden[i] = raekker[3 + i];
-		}
-
-		LottoThread f1 = new LottoThread(foerste, rigtig);
-		LottoThread f2 = new LottoThread(anden, rigtig);
-		f1.start();
-		f2.start();
-		f1.join();
-		f2.join();
-
-		int[] rigtige = new int[8];
-		for (int i = 0; i < rigtige.length; i++) {
-			rigtige[i] = f1.getRigtige()[i] + f2.getRigtige()[i];
-		}
-
-		System.out.println(Arrays.toString(rigtige));
+		long l2 = System.nanoTime();
+		System.out.println("K�retiden var " + (l2 - l1) / 1000000 + " millisekunder");
 
 		// Opgave 3
 
