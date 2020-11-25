@@ -13,7 +13,7 @@ public class MyThread extends Thread {
 	public void run() {
 		for (int i = 0; i < 100; i++) {
 			faelles.kritiskSektion();
-			faelles.tagerRandomTid(50);
+			faelles.tagerRandomTid(100);
 		}
 		System.out.println(faelles.getGlobal());
 	}
