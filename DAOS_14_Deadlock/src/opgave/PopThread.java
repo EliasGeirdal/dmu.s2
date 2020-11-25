@@ -11,7 +11,7 @@ public class PopThread extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				sleep(100);
+				sleep(200);
 				stack.pop();
 				System.out.println("Popped");
 			} catch (InterruptedException e) {

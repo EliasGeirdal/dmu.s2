@@ -11,7 +11,7 @@ public class PushThread extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				sleep(200);
+				sleep(100);
 				stack.push(1);
 				System.out.println("pushed");
 
