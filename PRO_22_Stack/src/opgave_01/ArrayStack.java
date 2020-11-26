@@ -44,7 +44,8 @@ public class ArrayStack implements Stack {
 
 	@Override
 	public Object peek() {
-		Object peeked = array[currentSize];
+		// check if it is empty
+		Object peeked = array[currentSize - 1];
 		return peeked;
 	}
 

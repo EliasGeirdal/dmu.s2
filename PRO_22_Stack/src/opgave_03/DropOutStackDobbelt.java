@@ -45,7 +45,6 @@ public class DropOutStackDobbelt implements Stack {
 			list.push(element);
 			position--;
 		}
-
 	}
 
 	@Override
