@@ -2,8 +2,6 @@ package linkedDropOutStack;
 
 import java.util.EmptyStackException;
 
-import exercises.Stack;
-
 public class LinkedStack<T> implements Stack<T> {
 	protected int count; // indicates the next open slot
 	protected LinearNode<T> top;
@@ -29,9 +27,8 @@ public class LinkedStack<T> implements Stack<T> {
 	}
 
 	/*******************************************************************
-	 * Removes the element at the top of this stack and returns a
-	 * reference to it. Throws an EmptyStackException if the stack
-	 * is empty.
+	 * Removes the element at the top of this stack and returns a reference to it.
+	 * Throws an EmptyStackException if the stack is empty.
 	 *******************************************************************/
 	@Override
 	public T pop() throws EmptyStackException {
@@ -47,9 +44,9 @@ public class LinkedStack<T> implements Stack<T> {
 	}
 
 	/*******************************************************************
-	 * Returns a reference to the element at the top of this stack.
-	 * The element is not removed from the stack. Throws an
-	 * EmptyStackException if the stack is empty.
+	 * Returns a reference to the element at the top of this stack. The element is
+	 * not removed from the stack. Throws an EmptyStackException if the stack is
+	 * empty.
 	 *******************************************************************/
 	@Override
 	public T peek() throws EmptyStackException {
