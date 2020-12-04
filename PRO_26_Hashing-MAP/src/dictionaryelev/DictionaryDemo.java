@@ -3,8 +3,12 @@ package dictionaryelev;
 public class DictionaryDemo {
 
 	public static void main(String[] args) {
-		// Dictionary map = new DictionaryHashMap<Integer,String>();
-		Dictionary<Integer, String> dictionary = new DictionaryLinked<Integer, String>();
+//		Dictionary map = new DictionaryHashMap<Integer, String>();
+//		LinkedListMap<Integer, String> dictionary = new LinkedListMap<Integer, String>();
+//		ArrayMap<Integer, String> dictionary = new ArrayMap<Integer, String>();
+//		DictionaryHashMap<Integer, String> dictionary = new DictionaryHashMap<Integer, String>();
+		DictionaryLinked<Integer, String> dictionary = new DictionaryLinked<Integer, String>();
+
 		System.out.println(dictionary.isEmpty());
 		System.out.println(dictionary.size());
 

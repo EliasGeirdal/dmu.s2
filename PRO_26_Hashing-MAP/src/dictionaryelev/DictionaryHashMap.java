@@ -7,11 +7,11 @@ public class DictionaryHashMap<K, V> implements Dictionary<K, V> {
 
 	private Map<K, V>[] tabel;
 	private static int N = 10;
+	private int size = 0;
 
 	/**
-	 * HashingMap constructor comment.
+	 * Constructs a HashMap based on a HashMap.
 	 */
-
 	public DictionaryHashMap() {
 		tabel = new HashMap[N];
 		for (int i = 0; i < N; i++) {
@@ -39,20 +39,25 @@ public class DictionaryHashMap<K, V> implements Dictionary<K, V> {
 
 	@Override
 	public V put(K key, V value) {
-		// TODO
-		return null;
+		int i = key.hashCode() % N;
+		Map<K, V> m = tabel[i];
+		V val = m.put(key, value);
+		size++;
+		return val;
 	}
 
 	@Override
 	public V remove(K key) {
-		// TODO
-		return null;
+		int i = key.hashCode() % N;
+		Map<K, V> m = tabel[i];
+		V val = m.remove(key);
+		size--;
+		return val;
 	}
 
 	@Override
 	public int size() {
-		// TODO
-		return 0;
+		return size;
 	}
 
 }

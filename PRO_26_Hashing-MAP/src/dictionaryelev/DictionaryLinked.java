@@ -6,9 +6,8 @@ public class DictionaryLinked<K, V> implements Dictionary<K, V> {
 	private int size;
 
 	/**
-	 * HashingMap constructor comment.
+	 * Constructs a HashMap based on a linked list.
 	 */
-
 	public DictionaryLinked() {
 		// Sentinel (tomt listehoved - der ikke indeholder data)
 		start = new Node();
@@ -17,26 +16,69 @@ public class DictionaryLinked<K, V> implements Dictionary<K, V> {
 
 	@Override
 	public V get(K key) {
-		// TODO
-		return null;
+		if (isEmpty() || key.equals(null)) {
+			return null;
+		}
+		Node current = start;
+		V val = null;
+		while (current.key != null) {
+			if (current.key.equals(key)) {
+				val = current.value;
+				break;
+			}
+			current = current.next;
+		}
+		return val;
 	}
 
 	@Override
 	public boolean isEmpty() {
-
 		return size == 0;
 	}
 
 	@Override
 	public V put(K key, V value) {
-		// TODO
-		return null;
+		if (key.equals(null) || value.equals(null)) {
+			return null;
+		}
+		V val = get(key);
+		if (val == null) {
+			Node newNode = new Node(key, value);
+			newNode.next = start;
+			start = newNode;
+			size++;
+		} else {
+			Node current = start;
+			while (current.key != null) {
+				if (current.key.equals(key)) {
+					current.value = value;
+					break;
+				}
+				current = current.next;
+			}
+		}
+		return val;
 	}
 
 	@Override
 	public V remove(K key) {
-		// TODO
-		return null;
+		if (isEmpty() || key.equals(null)) {
+			return null;
+		}
+		V val = null;
+		Node current = start.next;
+		Node previous = start;
+		while (current != null) {
+			if (current.key.equals(key)) {
+				val = current.value;
+				previous.next = current.next;
+				size--;
+				break;
+			}
+			previous = current;
+			current = current.next;
+		}
+		return val;
 	}
 
 	@Override
@@ -49,6 +91,14 @@ public class DictionaryLinked<K, V> implements Dictionary<K, V> {
 		Node next;
 		K key;
 		V value;
+
+		Node(K k, V v) {
+			key = k;
+			value = v;
+		}
+
+		Node() {
+		}
 	}
 
 }
