@@ -1,4 +1,4 @@
-package hashsetstudent;
+package opgave_05;
 
 /**
  * This class implements a hash set using separate chaining.
@@ -64,8 +64,47 @@ public class HashSetChaining {
 			buckets[h] = newNode;
 			currentSize++;
 		}
-
+		if (loadFactor()) {
+			reHash();
+		}
 		return !found;
+	}
+
+	public void reHash() {
+		Node[] newBuckets = new Node[buckets.length * 2];
+		for (int i = 0; i < currentSize; i++) {
+			if (buckets[i] != null) {
+				Node current = buckets[i];
+				while (current != null) {
+					int h = current.data.hashCode();
+					if (h < 0) {
+						h = -h;
+					}
+					h = h % newBuckets.length;
+
+					if (newBuckets[h] == null) {
+						Node newNode = new Node();
+						newNode.data = current.data;
+						newBuckets[h] = newNode;
+					} else {
+						Node newNode = new Node();
+						newNode.data = current.data;
+						newNode.next = newBuckets[h];
+						newBuckets[h] = newNode;
+					}
+					current = current.next;
+				}
+			}
+		}
+		buckets = newBuckets;
+	}
+
+	public boolean loadFactor() {
+		boolean result = false;
+		if ((currentSize + 0.0) / buckets.length > 0.75) {
+			result = true;
+		}
+		return result;
 	}
 
 	/**
