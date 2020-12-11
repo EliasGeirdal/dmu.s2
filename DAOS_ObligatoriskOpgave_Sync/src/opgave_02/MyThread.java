@@ -21,8 +21,8 @@ public class MyThread extends Thread {
 			while (faelles.getFlag(concurrentId) && faelles.getTurn() == concurrentId) {
 			}
 			faelles.kritiskSektion();
-			faelles.tagerRandomTid(50);
 			faelles.setFlag(false, thisId);
+			faelles.tagerRandomTid(50);
 		}
 		System.out.println(faelles.getGlobal());
 	}
