@@ -141,11 +141,7 @@ public class HashSetChaining {
 
 	private int hashValue(Object x) {
 		int h = x.hashCode();
-		if (h < 0) {
-			h = -h;
-		}
-		h = h % buckets.length;
-		return h;
+		return h < 0 ? (-h) % buckets.length : h % buckets.length;
 	}
 
 	/**

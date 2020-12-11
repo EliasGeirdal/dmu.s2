@@ -128,11 +128,7 @@ public class HashSetLinearProbing {
 
 	private int hashValue(Object x) {
 		int h = x.hashCode();
-		if (h < 0) {
-			h = -h;
-		}
-		h = h % buckets.length;
-		return h;
+		return h < 0 ? (-h) % buckets.length : h % buckets.length;
 	}
 
 	// method only for test purpose
@@ -141,5 +137,4 @@ public class HashSetLinearProbing {
 			System.out.println(i + "\t" + buckets[i]);
 		}
 	}
-
 }

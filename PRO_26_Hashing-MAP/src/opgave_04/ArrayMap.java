@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import dictionaryelev.Dictionary;
 
 public class ArrayMap<K, V> implements Dictionary<K, V> {
-	@SuppressWarnings("unchecked")
 	private ArrayList<Node>[] bucket;
 	private int currentSize;
 
@@ -60,8 +59,8 @@ public class ArrayMap<K, V> implements Dictionary<K, V> {
 		}
 		if (val == null) {
 			bucket[h].add(new Node(key, value));
+			currentSize++;
 		}
-		currentSize++;
 		return val;
 	}
 
@@ -90,11 +89,7 @@ public class ArrayMap<K, V> implements Dictionary<K, V> {
 
 	private int hashValue(Object x) {
 		int h = x.hashCode();
-		if (h < 0) {
-			h = -h;
-		}
-		h = h % bucket.length;
-		return h;
+		return h < 0 ? (-h) % bucket.length : h % bucket.length;
 	}
 
 	@SuppressWarnings("hiding")

@@ -9,7 +9,6 @@ public class DictionaryLinked<K, V> implements Dictionary<K, V> {
 	 * Constructs a HashMap based on a linked list.
 	 */
 	public DictionaryLinked() {
-		// Sentinel (tomt listehoved - der ikke indeholder data)
 		start = new Node();
 		size = 0;
 	}
@@ -68,6 +67,7 @@ public class DictionaryLinked<K, V> implements Dictionary<K, V> {
 		V val = null;
 		Node current = start.next;
 		Node previous = start;
+		// check prev
 		while (current != null) {
 			if (current.key.equals(key)) {
 				val = current.value;
@@ -83,7 +83,6 @@ public class DictionaryLinked<K, V> implements Dictionary<K, V> {
 
 	@Override
 	public int size() {
-
 		return size;
 	}
 
