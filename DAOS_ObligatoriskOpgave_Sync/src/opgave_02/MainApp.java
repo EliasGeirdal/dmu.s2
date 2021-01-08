@@ -7,9 +7,9 @@ public class MainApp {
 		MyThread t1 = new MyThread("A", faelles, 0);
 		MyThread t2 = new MyThread("B", faelles, 1);
 
+		t1.start();
+		t2.start();
 		try {
-			t1.start();
-			t2.start();
 			t1.join();
 			t2.join();
 		} catch (InterruptedException e) {

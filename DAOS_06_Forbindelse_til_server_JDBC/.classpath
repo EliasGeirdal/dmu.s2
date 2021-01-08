@@ -2,5 +2,9 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="sqljdbc4.jar"/>
+>>>>>>> branch 'master' of https://github.com/EliasGeirdal/dmu.s2.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
