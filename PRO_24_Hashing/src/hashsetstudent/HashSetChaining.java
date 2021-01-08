@@ -45,7 +45,6 @@ public class HashSetChaining {
 	 */
 	public boolean add(Object x) {
 		int h = hashValue(x);
-
 		Node current = buckets[h];
 		boolean found = false;
 		while (!found && current != null) {
