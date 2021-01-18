@@ -6,6 +6,7 @@ import java.util.concurrent.Semaphore;
 public class Common {
 	private int tjenerTaeller = 0, kokTaeller = 0;
 	private Semaphore sem = new Semaphore(1);
+	private Semaphore sem1 = new Semaphore(0);
 
 	public Common() {
 	}
@@ -17,6 +18,7 @@ public class Common {
 		tjenerTaeller = temp + 1;
 		System.out.println("Tjenertæller: " + tjenerTaeller);
 		sem.release();
+		sem1.re
 	}
 
 	public void udFoerBestilling() throws InterruptedException {
