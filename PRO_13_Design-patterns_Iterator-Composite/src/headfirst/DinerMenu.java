@@ -1,11 +1,10 @@
 package headfirst;
 
-
 import java.util.Iterator;
 
-public class DinerMenu implements Iterable<MenuItem>{
+public class DinerMenu implements Iterable<MenuItem> {
 	private static final int MAX_ITEMS = 6;
-	
+
 	private int numberOfItems;
 	private MenuItem[] menuItems;
 
@@ -34,7 +33,7 @@ public class DinerMenu implements Iterable<MenuItem>{
 	public Iterator<MenuItem> iterator() {
 		return new DinerMenuIterator();
 	}
-	
+
 //	--------------------------------------------- Indre klasse ---------------------------------------
 	private class DinerMenuIterator implements Iterator<MenuItem> {
 
@@ -46,7 +45,7 @@ public class DinerMenu implements Iterable<MenuItem>{
 
 		@Override
 		public boolean hasNext() {
-			return position<menuItems.length && menuItems[position]!=null;
+			return position < menuItems.length && menuItems[position] != null;
 		}
 
 		@Override
@@ -57,6 +56,5 @@ public class DinerMenu implements Iterable<MenuItem>{
 		}
 
 	}
-
 
 }

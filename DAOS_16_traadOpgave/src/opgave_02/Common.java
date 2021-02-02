@@ -4,8 +4,14 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 public class Common {
+<<<<<<< HEAD
 	private int tjenerTaeller, kokTaeller;
 	private Semaphore sem, sem2;
+=======
+	private int tjenerTaeller = 0, kokTaeller = 0;
+	private Semaphore sem = new Semaphore(1);
+	private Semaphore sem1 = new Semaphore(0);
+>>>>>>> branch 'master' of https://github.com/EliasGeirdal/dmu.s2.git
 
 	public Common() {
 		tjenerTaeller = 0;
@@ -21,6 +27,7 @@ public class Common {
 		System.out.println("Tjenertæller: " + tjenerTaeller);
 		sem2.release();
 		sem.release();
+		sem1.re
 	}
 
 	public void udFoerBestilling() throws InterruptedException {

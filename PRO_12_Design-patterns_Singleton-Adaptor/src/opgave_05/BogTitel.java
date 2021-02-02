@@ -22,8 +22,7 @@ public class BogTitel extends Observable {
 		antal--;
 		k.addBogTitel(this);
 		setChanged();
-		notifyObservers();
-
+		notifyObservers(antal);
 	}
 
 	public void addKunde(Kunde k) {

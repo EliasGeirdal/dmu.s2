@@ -103,7 +103,6 @@ public class MainApp {
 			legal = true;
 		}
 		return legal;
-
 	}
 
 }
