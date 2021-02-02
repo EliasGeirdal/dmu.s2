@@ -51,5 +51,4 @@ public class FletteSorteringHul {
 			list.set(i + low, temp.get(i));
 		}
 	}
-
 }

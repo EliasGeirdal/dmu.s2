@@ -12,16 +12,15 @@ public class Tjener extends Thread {
 	@Override
 	public void run() {
 		int i = 0;
-		while (i < 100) {
+		while (true) {
 			try {
 				sleep(1000);
 				cmn.modtagBestilling();
 				System.out.println("Bestilling oprettet. \n");
-
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			i++;
+//			i++;
 		}
 	}
 }

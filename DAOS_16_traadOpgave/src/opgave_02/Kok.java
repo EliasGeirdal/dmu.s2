@@ -11,15 +11,15 @@ public class Kok extends Thread {
 
 	public void run() {
 		int i = 0;
-		while (i < 100) {
+		while (true) {
 			try {
-				sleep(100);
+				sleep(1000);
 				cmn.udFoerBestilling();
 				System.out.println("Bestilling fuldført.\n");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		i++;
+//		i++;
 	}
 }

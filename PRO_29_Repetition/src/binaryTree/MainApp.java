@@ -27,5 +27,8 @@ public class MainApp {
 		System.out.println(root.value());
 		root.print();
 
+		System.out.println("\n" + root.height());
+		root.postOrder();
+
 	}
 }

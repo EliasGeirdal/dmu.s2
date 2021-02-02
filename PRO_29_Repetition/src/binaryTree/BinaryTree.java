@@ -154,15 +154,7 @@ public class BinaryTree<E> {
 	}
 
 	private int size(Node n) {
-		if (n == null)
-			return 0;
-		int size = 0;
-		if (isLeaf(n)) {
-			size = 1;
-		} else {
-			size = 1 + size(n.left) + size(n.right);
-		}
-		return size;
+		return n == null ? 0 : 1 + size(n.left) + size(n.right);
 	}
 
 	public int height() {
@@ -170,8 +162,6 @@ public class BinaryTree<E> {
 	}
 
 	private int height(Node n) {
-		if (n == null)
-			return 0;
 		if (isLeaf(n)) {
 			return 1;
 		}
@@ -185,9 +175,7 @@ public class BinaryTree<E> {
 	}
 
 	private void inOrder(Node n) {
-		if (isLeaf(n)) {
-			System.out.print(n.data + " ");
-		} else {
+		if (n != null) {
 			inOrder(n.left);
 			System.out.print(n.data + " ");
 			inOrder(n.right);
@@ -209,9 +197,7 @@ public class BinaryTree<E> {
 	}
 
 	private void postOrder(Node n) {
-		if (isLeaf(n)) {
-			System.out.print(n.data + " ");
-		} else {
+		if (n != null) {
 			postOrder(n.left);
 			postOrder(n.right);
 			System.out.print(n.data + " ");

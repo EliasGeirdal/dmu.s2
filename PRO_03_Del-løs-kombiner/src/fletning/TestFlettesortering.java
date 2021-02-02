@@ -26,6 +26,7 @@ public class TestFlettesortering {
 		list.add(15);
 		list.add(12);
 		list.add(34);
+		list.add(38);
 		// [8, 56, 45, 34, 15, 12, 34,
 		System.out.println(list);
 
